@@ -1,0 +1,48 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model WaitlistSubscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now()) @map("created_at")
+  source    String?
+  referrer  String?
+  ipAddress String?  @map("ip_address")
+
+  @@map("waitlist_subscribers")
+}
+
+model DemoUsage {
+  id         String   @id @default(cuid())
+  ipAddress  String   @map("ip_address")
+  demoType   String   @map("demo_type")
+  usageCount Int      @default(1) @map("usage_count")
+  lastUsed   DateTime @default(now()) @map("last_used")
+  sessionId  String?  @map("session_id")
+
+  @@index([ipAddress, demoType])
+  @@index([lastUsed])
+  @@map("demo_usage")
+}
+
+model NewsletterSubscriber {
+  id          String   @id @default(cuid())
+  email       String   @unique
+  subscribedAt DateTime @default(now()) @map("subscribed_at")
+  source      String?
+  active      Boolean  @default(true)
+
+  @@map("newsletter_subscribers")
+}
