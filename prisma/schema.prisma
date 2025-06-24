@@ -46,3 +46,27 @@ model NewsletterSubscriber {
 
   @@map("newsletter_subscribers")
 }
+
+model AnalyticsEvent {
+  id         String   @id @default(cuid())
+  eventName  String
+  properties String   // JSON string
+  userAgent  String?
+  referer    String?
+  ipAddress  String?  @map("ip_address")
+  timestamp  DateTime @default(now())
+
+  @@index([eventName])
+  @@index([timestamp])
+  @@map("analytics_events")
+}
+
+model GitHubStats {
+  id           Int      @id @default(1) // Single row table
+  stars        Int      @default(0)
+  forks        Int      @default(0)
+  contributors Int      @default(0)
+  lastUpdated  DateTime @default(now()) @map("last_updated")
+
+  @@map("github_stats")
+}
