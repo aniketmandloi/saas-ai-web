@@ -39,37 +39,50 @@ export const FEATURES = [
   {
     title: "Authentication",
     description:
-      "Complete auth system with social logins, email verification, and role-based access.",
+      "Complete auth system with Clerk integration and role-based access.",
     icon: "lock",
   },
   {
     title: "AI Integration",
     description:
-      "Pre-built AI components for chatbots, content generation, and text summarization.",
+      "Pre-built AI components with rate limiting and usage tracking.",
     icon: "brain",
   },
   {
-    title: "Payments",
-    description:
-      "Subscription management with Stripe integration and usage-based billing.",
+    title: "Polar Payments",
+    description: "Modern subscription management with Polar's hosted checkout.",
     icon: "credit-card",
   },
   {
-    title: "Team Collaboration",
+    title: "Team Features",
     description: "Multi-user workspaces with real-time collaboration features.",
     icon: "users",
   },
   {
     title: "Analytics",
     description:
-      "Built-in analytics dashboard to track user engagement and conversion.",
+      "Built-in analytics with Google Analytics and custom event tracking.",
     icon: "bar-chart",
   },
   {
     title: "API Access",
-    description:
-      "RESTful and GraphQL APIs with rate limiting and authentication.",
+    description: "RESTful APIs with rate limiting and Vercel KV integration.",
     icon: "code",
+  },
+  {
+    title: "Vector Search",
+    description: "Built-in RAG capabilities for AI-powered search.",
+    icon: "database",
+  },
+  {
+    title: "Edge Functions",
+    description: "Global performance with Vercel Edge Functions.",
+    icon: "zap",
+  },
+  {
+    title: "MDX Content",
+    description: "Dynamic documentation and blog system with MDX.",
+    icon: "file-text",
   },
 ];
 

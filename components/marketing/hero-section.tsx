@@ -8,6 +8,7 @@ import { AnimatedGroup } from "../ui/animated-group";
 import { HeroHeader } from "@/components/marketing/header";
 import { GitHubStatsDisplay } from "./github-stats";
 import { GitHubStats } from "@/types";
+import { Variants } from "motion/react";
 
 const transitionVariants = {
   item: {
@@ -86,7 +87,7 @@ export default function HeroSection({ stats }: HeroSectionProps) {
             <div className="absolute inset-0 -z-10 size-full [background:radial-gradient(125%_125%_at_50%_100%,transparent_0%,var(--color-background)_75%)]"></div>
             <div className="mx-auto max-w-7xl px-6">
               <div className="text-center sm:mx-auto lg:mr-auto lg:mt-0">
-                <AnimatedGroup variants={transitionVariants}>
+                <AnimatedGroup variants={transitionVariants as Variants}>
                   <Link
                     href="/docs"
                     className="hover:bg-background dark:hover:border-t-border bg-muted group mx-auto flex w-fit items-center gap-4 rounded-full border p-1 pl-4 shadow-md shadow-zinc-950/5 transition-colors duration-300 dark:border-t-white/5 dark:shadow-zinc-950"
@@ -141,7 +142,7 @@ export default function HeroSection({ stats }: HeroSectionProps) {
                           },
                         },
                       },
-                      ...transitionVariants,
+                      ...(transitionVariants as Variants),
                     }}
                     className="mt-6 flex justify-center"
                   >
@@ -159,7 +160,7 @@ export default function HeroSection({ stats }: HeroSectionProps) {
                         },
                       },
                     },
-                    ...transitionVariants,
+                    ...(transitionVariants as Variants),
                   }}
                   className="mt-12 flex flex-col items-center justify-center gap-2 md:flex-row"
                 >
@@ -202,7 +203,7 @@ export default function HeroSection({ stats }: HeroSectionProps) {
                     },
                   },
                 },
-                ...transitionVariants,
+                ...(transitionVariants as Variants),
               }}
             >
               <div className="relative -mr-56 mt-8 overflow-hidden px-2 sm:mr-0 sm:mt-12 md:mt-20">
