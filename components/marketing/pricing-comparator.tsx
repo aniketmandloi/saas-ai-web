@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Cpu, Sparkles, Code, Users } from "lucide-react";
+import { Cpu, Sparkles, Code, Users, Globe } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
@@ -16,15 +16,15 @@ const tableData = [
       },
       {
         feature: "Database Integration",
-        free: true,
-        pro: true,
-        startup: true,
-      },
-      {
-        feature: "API Routes",
         free: "Basic",
         pro: "Advanced",
         startup: "Custom",
+      },
+      {
+        feature: "API Routes",
+        free: "Limited",
+        pro: true,
+        startup: true,
       },
     ],
   },
@@ -33,22 +33,22 @@ const tableData = [
     icon: Sparkles,
     features: [
       {
-        feature: "AI Models",
+        feature: "AI Models Integration",
         free: "1 Model",
         pro: "3 Models",
-        startup: "Custom Models",
+        startup: "Unlimited",
+      },
+      {
+        feature: "Rate Limiting",
+        free: "5/hour",
+        pro: "100/hour",
+        startup: "Custom",
       },
       {
         feature: "Vector Search",
         free: false,
         pro: true,
         startup: true,
-      },
-      {
-        feature: "Rate Limiting",
-        free: "Basic",
-        pro: "Advanced",
-        startup: "Custom",
       },
     ],
   },
@@ -63,14 +63,14 @@ const tableData = [
         startup: true,
       },
       {
-        feature: "MDX System",
+        feature: "MDX Documentation",
         free: false,
         pro: true,
         startup: true,
       },
       {
         feature: "Custom Templates",
-        free: false,
+        free: "1 Template",
         pro: "5 Templates",
         startup: "Unlimited",
       },
@@ -87,7 +87,7 @@ const tableData = [
         startup: "Unlimited",
       },
       {
-        feature: "Collaboration",
+        feature: "Collaboration Tools",
         free: false,
         pro: true,
         startup: true,
@@ -97,6 +97,30 @@ const tableData = [
         free: false,
         pro: true,
         startup: true,
+      },
+    ],
+  },
+  {
+    category: "Analytics & Support",
+    icon: Globe,
+    features: [
+      {
+        feature: "Usage Analytics",
+        free: "Basic",
+        pro: "Advanced",
+        startup: "Custom",
+      },
+      {
+        feature: "Support",
+        free: "Community",
+        pro: "Priority Email",
+        startup: "Dedicated Slack",
+      },
+      {
+        feature: "SLA",
+        free: false,
+        pro: "99.9%",
+        startup: "Custom",
       },
     ],
   },
