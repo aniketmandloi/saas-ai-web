@@ -56,15 +56,17 @@ export const getGitHubStats = cache(async () => {
 // Store GitHub stats in database for fallback
 async function storeGitHubStats(stats: GitHubStats) {
   try {
-    // Store in KV store or database
+    // Convert ISO string to timestamp that PostgreSQL can understand
     await prisma.$executeRaw`
       INSERT INTO github_stats (stars, forks, contributors, last_updated)
-      VALUES (${stats.stars}, ${stats.forks}, ${stats.contributors}, ${stats.lastUpdated})
+      VALUES (${stats.stars}, ${stats.forks}, ${stats.contributors}, ${new Date(
+      stats.lastUpdated
+    )})
       ON CONFLICT (id) DO UPDATE
       SET stars = ${stats.stars},
           forks = ${stats.forks},
           contributors = ${stats.contributors},
-          last_updated = ${stats.lastUpdated}
+          last_updated = ${new Date(stats.lastUpdated)}
     `;
   } catch (error) {
     console.error("Failed to store GitHub stats:", error);

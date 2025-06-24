@@ -8,6 +8,7 @@ export interface GitHubStats {
   stars: number;
   forks: number;
   contributors: number;
+  lastUpdated: string;
 }
 
 export interface DemoUsage {
@@ -18,8 +19,10 @@ export interface DemoUsage {
 }
 
 export interface WaitlistSubscriber {
+  id: string;
   email: string;
-  source: string;
+  createdAt: Date;
+  source?: string;
   referrer?: string;
 }
 
@@ -27,4 +30,15 @@ export interface NewsletterSubscriber {
   email: string;
   source?: string;
   active: boolean;
+}
+
+export type DemoType = "chatbot" | "generator" | "summarizer";
+
+export interface AnalyticsEvent {
+  eventName: string;
+  properties: Record<string, unknown>;
+  timestamp: Date;
+  userAgent?: string;
+  referer?: string;
+  ipAddress?: string;
 }
