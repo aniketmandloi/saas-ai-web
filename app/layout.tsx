@@ -1,33 +1,78 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import type { Metadata } from "next";
+import { Inter as FontSans } from "next/font/google";
+import { cn } from "@/lib/utils";
+import { ThemeProvider } from "@/components/shared/theme-provider";
+import { SEO_DEFAULTS } from "@/lib/constants";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const fontSans = FontSans({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: "--font-sans",
 });
 
 export const metadata: Metadata = {
-  title: "SaaS AI Starter Kit",
-  description: "Production-Ready SaaS Starter Kit",
+  title: {
+    default: SEO_DEFAULTS.title,
+    template: `%s | ${SEO_DEFAULTS.title}`,
+  },
+  description: SEO_DEFAULTS.description,
+  keywords: [
+    "SaaS",
+    "Starter Kit",
+    "AI",
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+  ],
+  authors: [
+    {
+      name: "Your Name",
+      url: "https://yourwebsite.com",
+    },
+  ],
+  creator: "Your Name",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: SEO_DEFAULTS.url,
+    title: SEO_DEFAULTS.title,
+    description: SEO_DEFAULTS.description,
+    siteName: SEO_DEFAULTS.siteName,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SEO_DEFAULTS.title,
+    description: SEO_DEFAULTS.description,
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={cn(
+          "min-h-screen bg-background font-sans antialiased",
+          fontSans.variable
+        )}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
