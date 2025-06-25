@@ -3,9 +3,9 @@
 
 // Demo types
 export const DEMO_TYPES = {
-  CHATBOT: "chatbot",
-  CONTENT_GENERATOR: "generator",
-  SUMMARIZER: "summarizer",
+  CHATBOT: "Chatbot",
+  GENERATOR: "Content Generator",
+  SUMMARIZER: "Text Summarizer",
 } as const;
 
 export type DemoType = (typeof DEMO_TYPES)[keyof typeof DEMO_TYPES];

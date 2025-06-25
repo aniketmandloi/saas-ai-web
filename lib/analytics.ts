@@ -1,6 +1,4 @@
-import { headers } from "next/headers";
 import { prisma } from "./db";
-import { getClientIP } from "./rate-limit";
 
 // Event types for type safety
 export type AnalyticsEvent =
@@ -14,38 +12,7 @@ export type AnalyticsEvent =
   | "purchase_attempt"
   | "purchase_completed";
 
-// Track event server-side
-export async function trackEvent(
-  eventName: AnalyticsEvent,
-  properties: Record<string, string | number | boolean> = {}
-) {
-  try {
-    // Get client information
-    const headersList = await headers();
-    const userAgent = headersList.get("user-agent") || "";
-    const referer = headersList.get("referer") || "";
-    const ip = await getClientIP();
-
-    // Store event in database
-    await prisma.analyticsEvent.create({
-      data: {
-        eventName,
-        properties: JSON.stringify(properties),
-        userAgent,
-        referer,
-        ipAddress: ip,
-        timestamp: new Date(),
-      },
-    });
-
-    return { success: true };
-  } catch (error) {
-    console.error("Failed to track event:", error);
-    return { success: false, error };
-  }
-}
-
-// Get analytics data for dashboard
+// Get analytics data for dashboard (server-side only)
 export async function getAnalyticsData(
   startDate: Date,
   endDate: Date = new Date(),

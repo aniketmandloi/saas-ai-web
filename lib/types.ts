@@ -28,3 +28,9 @@ export interface DemoQuotaResult {
   total: number;
   resetAt?: Date;
 }
+
+export interface ChatMessage {
+  role: "user" | "assistant";
+  content: string;
+  timestamp: Date;
+}
